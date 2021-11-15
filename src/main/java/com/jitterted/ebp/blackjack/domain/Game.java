@@ -1,6 +1,7 @@
-package com.jitterted.ebp.blackjack;
+package com.jitterted.ebp.blackjack.domain;
 
-import org.fusesource.jansi.Ansi;
+import com.jitterted.ebp.blackjack.adapter.in.console.ConsoleGame;
+import com.jitterted.ebp.blackjack.adapter.in.console.ConsoleHand;
 
 import java.util.Scanner;
 
@@ -17,29 +18,15 @@ public class Game {
     private boolean playerDone;
 
     public static void main(String[] args) {
-        displayWelcomeScreen();
+        ConsoleGame.displayWelcomeScreen();
         playGame();
-        resetScreen();
-    }
-
-    public static void resetScreen() {
-        System.out.println(ansi().reset());
+        ConsoleGame.resetScreen();
     }
 
     private static void playGame() {
         Game game = new Game();
         game.initialDeal();
         game.play();
-    }
-
-    public static void displayWelcomeScreen() {
-        System.out.println(ansi()
-                                   .bgBright(Ansi.Color.WHITE)
-                                   .eraseScreen()
-                                   .cursor(1, 1)
-                                   .fgGreen().a("Welcome to")
-                                   .fgRed().a(" Jitterted's")
-                                   .fgBlack().a(" BlackJack"));
     }
 
     public Game() {
