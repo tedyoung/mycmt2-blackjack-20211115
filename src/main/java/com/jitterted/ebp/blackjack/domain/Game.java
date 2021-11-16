@@ -77,12 +77,14 @@ public class Game {
     }
 
     public void playerHits() {
+        // "require": can't already be done
         playerHand.drawFrom(deck);
         playerDone = playerHand.isBusted();
     }
 
     public void playerStands() {
-        playerDone = true;
+        // "require": can't already be done
+        playerDone = true; // idempotent
     }
 
     public boolean isPlayerDone() {
