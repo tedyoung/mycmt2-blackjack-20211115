@@ -87,7 +87,9 @@ public class Game {
         // "require": can't already be done
         playerHand.drawFrom(deck);
         playerDone = playerHand.isBusted();
-        gameMonitor.roundCompleted(this);
+        if (playerDone) {
+            gameMonitor.roundCompleted(this);
+        }
     }
 
     public void playerStands() {
