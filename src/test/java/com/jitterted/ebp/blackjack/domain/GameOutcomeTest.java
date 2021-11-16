@@ -13,8 +13,8 @@ class GameOutcomeTest {
 
         game.playerHits();
 
-        assertThat(game.determineOutcome().display())
-                .isEqualTo("You Busted, so you lose.  💸");
+        assertThat(game.determineOutcome())
+                .isEqualByComparingTo(GameOutcome.PLAYER_BUSTED);
     }
 
     @Test
@@ -25,8 +25,8 @@ class GameOutcomeTest {
         game.playerStands();
         game.dealerTurn();
 
-        assertThat(game.determineOutcome().display())
-                .isEqualTo("You beat the Dealer! 💵");
+        assertThat(game.determineOutcome())
+                .isEqualByComparingTo(GameOutcome.PLAYER_BEATS_DEALER);
     }
 
 }
