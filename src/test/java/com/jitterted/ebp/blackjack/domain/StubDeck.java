@@ -25,6 +25,11 @@ public class StubDeck extends Deck {
                             Rank.QUEEN, Rank.JACK);
     }
 
+    public static StubDeck playerNorDealerDealtBlackjack() {
+        return new StubDeck(Rank.TEN, Rank.EIGHT,
+                            Rank.QUEEN, Rank.JACK);
+    }
+
     public static StubDeck playerHitsAndGoesBust() {
         return new StubDeck(Rank.TEN, Rank.EIGHT,
                             Rank.QUEEN, Rank.JACK,

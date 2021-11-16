@@ -23,7 +23,6 @@ class GameOutcomeTest {
         game.initialDeal();
 
         game.playerStands();
-        game.dealerTurn();
 
         assertThat(game.determineOutcome())
                 .isEqualByComparingTo(GameOutcome.PLAYER_BEATS_DEALER);
@@ -42,5 +41,21 @@ class GameOutcomeTest {
         assertThat(game.isPlayerDone())
                 .isTrue();
     }
+
+    @Test
+    public void standResultsInDealerDrawingCardOnTheirTurn() throws Exception {
+        Deck dealerBeatsPlayerAfterDrawingAdditionalCardDeck =
+                new StubDeck(Rank.TEN, Rank.QUEEN,
+                             Rank.NINE, Rank.FIVE,
+                             Rank.SIX);
+        Game game = new Game(dealerBeatsPlayerAfterDrawingAdditionalCardDeck);
+        game.initialDeal();
+
+        game.playerStands();
+
+        assertThat(game.dealerHand().cards())
+                .hasSize(3);
+    }
+
 
 }
