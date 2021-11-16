@@ -33,6 +33,8 @@ public class Game {
     }
 
     public GameOutcome determineOutcome() {
+        // should we allow this method to be called if the game isn't done?
+        // no, we really shouldn't - the answer wouldn't make sense
         if (playerHand.isBusted()) {
             return GameOutcome.PLAYER_BUSTED;
         } else if (dealerHand.isBusted()) {
