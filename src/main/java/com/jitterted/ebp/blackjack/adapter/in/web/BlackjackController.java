@@ -37,4 +37,10 @@ public class BlackjackController {
         }
         return "redirect:/game";
     }
+
+    @GetMapping("/done")
+    public String doneView() {
+        return "done";
+    }
+
 }
