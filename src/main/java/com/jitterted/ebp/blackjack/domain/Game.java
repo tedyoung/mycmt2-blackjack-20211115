@@ -1,21 +1,26 @@
 package com.jitterted.ebp.blackjack.domain;
 
+import com.jitterted.ebp.blackjack.domain.port.GameMonitor;
+
 // An Entity (even though it doesn't have an ID)
 public class Game {
 
     private final Deck deck;
+    private final GameMonitor gameMonitor;
 
     private final Hand dealerHand = new Hand();
     private final Hand playerHand = new Hand();
 
     private boolean playerDone;
 
-    public Game() {
-        deck = new Deck();
+    public Game(Deck deck) {
+        this(deck, game -> {
+        });
     }
 
-    public Game(Deck deck) {
+    public Game(Deck deck, GameMonitor gameMonitor) {
         this.deck = deck;
+        this.gameMonitor = gameMonitor;
     }
 
     public void initialDeal() {
@@ -88,6 +93,7 @@ public class Game {
         // "require": can't already be done
         playerDone = true; // idempotent
         dealerTurn();
+        gameMonitor.roundCompleted(this);
     }
 
     public boolean isPlayerDone() {
