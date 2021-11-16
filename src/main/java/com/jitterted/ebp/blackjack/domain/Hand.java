@@ -61,4 +61,7 @@ public class Hand {
         return hand.value() < value();
     }
 
+    boolean hasBlackjack() {
+        return cards.size() == 2 && value() == 21;
+    }
 }
