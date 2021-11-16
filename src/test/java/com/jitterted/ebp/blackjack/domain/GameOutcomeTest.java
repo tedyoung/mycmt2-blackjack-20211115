@@ -8,7 +8,7 @@ class GameOutcomeTest {
 
     @Test
     public void playerHitsAndGoesBustThenPlayerLoses() throws Exception {
-        Game game = new Game(StubDeck.playerHitsAndGoesBustDeck());
+        Game game = new Game(StubDeck.playerHitsAndGoesBust());
         game.initialDeal();
 
         game.playerHits();
